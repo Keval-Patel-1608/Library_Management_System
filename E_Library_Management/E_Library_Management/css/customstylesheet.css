@@ -1,0 +1,40 @@
+﻿.footerlinks {
+    color: lightslategrey;
+}
+
+    .footerlinks:hover {
+        color: #ffffff;
+    }
+
+#footer1 {
+    background: black;
+    position: fixed;
+    bottom: 0px;
+   
+}
+
+#footer2 {
+    background: black;
+    z-index:2;
+    position: absolute;
+    /*bottom: 0px;*/
+}
+
+.nav-link {
+    color: #788e93;
+}
+
+    .nav-link:hover {
+        color: #ffffff;
+    }
+
+#nav-1 {
+    background-color: black;
+}
+
+.navbar {
+    z-index: 2;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+}
