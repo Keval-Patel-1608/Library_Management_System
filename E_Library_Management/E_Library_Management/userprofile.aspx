@@ -1,5 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="userprofile.aspx.cs" Inherits="E_Library_Management.userprofile" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
+        });
+    </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -144,7 +151,7 @@
                             <div class="col-md-4">
                                 <label>Old Password :</label>
                                 <div class="form-group">
-                                    <asp:TextBox class="form-control" ID="TextBox9" runat="server" placeholder="Password" TextMode="Password" ReadOnly="True"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="TextBox9" runat="server" placeholder="Password" ReadOnly="True"></asp:TextBox>
                                 </div>
                             </div>
 
@@ -160,7 +167,8 @@
                             <div class="col">
                                 
                                 <div class="form-group">
-                                        <input class="btn btn-primary btn-block btn-lg" id="Button2" type="button" value="Update" />
+                                        <%--<input class="btn btn-primary btn-block btn-lg" id="Button2" type="button" value="Update" />--%>
+                                        <asp:LinkButton class="btn btn-primary btn-block btn-lg" ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" >Update</asp:LinkButton>                                                                                        
                                 </div>
 
                             </div>  
@@ -201,8 +209,27 @@
                         </div>
 
                        <div class="row">
+                           <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:elibraryDBConnectionString2 %>" SelectCommand="SELECT * FROM [book_issue_table]"></asp:SqlDataSource>
                            <div class="col">
-                               <asp:GridView class="table table-dark table-hover" ID="GridView1" runat="server"></asp:GridView>
+                               <asp:GridView class="table table-hover" ID="GridView1" runat="server" OnRowDataBound="GridView1_RowDataBound" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
+                                   <AlternatingRowStyle BackColor="#CCCCCC" />
+                                   <Columns>
+                                       <asp:BoundField DataField="member_id" HeaderText="Member ID" SortExpression="member_id" />
+                                       <asp:BoundField DataField="member_name" HeaderText="Member Name" SortExpression="member_name" />
+                                       <asp:BoundField DataField="book_id" HeaderText="Book ID" SortExpression="book_id" />
+                                       <asp:BoundField DataField="book_name" HeaderText="Book Name" SortExpression="book_name" />
+                                       <asp:BoundField DataField="issue_date" HeaderText="Issue Date" SortExpression="issue_date" />
+                                       <asp:BoundField DataField="due_date" HeaderText="Due Date" SortExpression="due_date" />
+                                   </Columns>
+                                   <FooterStyle BackColor="#CCCCCC" />
+                                   <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                                   <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                                   <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                   <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                   <SortedAscendingHeaderStyle BackColor="#808080" />
+                                   <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                   <SortedDescendingHeaderStyle BackColor="#383838" />
+                               </asp:GridView>
                                <%--<asp:GridView class="table table-striped table-bordered" ID="GridView2" runat="server"></asp:GridView>--%>
                            </div>
                        </div>

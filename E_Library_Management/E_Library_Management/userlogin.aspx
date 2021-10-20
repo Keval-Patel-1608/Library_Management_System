@@ -7,7 +7,7 @@
     <section style="background-color: #D6E4ED ; background-image: url('imgs/bg_lib_2.jpg'); background-repeat: no-repeat; background-attachment: fixed ; background-size: 100% 100%;">
     
         <%--<section style="background-color: #D6E4ED ;">--%>
-    <br /><br /><br /><br />
+    <br /><br /><br />
     <div class="container">
         <div class="row">
             <div class="col-md-5 mx-auto">
@@ -51,7 +51,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <asp:Button class="btn btn-success btn-block btn-lg rounded-pill" ID="Button3" runat="server" Text="Login" />
+                                    <asp:Button class="btn btn-success btn-block btn-lg rounded-pill" ID="Button3" runat="server" Text="Login" OnClick="Button3_Click"/>
                                     <hr />
                                 </div>
 
@@ -95,6 +95,6 @@
         </div>
     </div>
          
-    <br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br />
     </section>
 </asp:Content>

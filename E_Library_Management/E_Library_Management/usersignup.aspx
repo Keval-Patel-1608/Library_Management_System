@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <section style="background-color: #D6E4ED ; background-image: url('imgs/bg_lib.jpg'); background-repeat: no-repeat; background-attachment: fixed ; background-size: 100% 100%;">
-        <br /><br /><br /><br />
+        <br /><br />
         <div class="container">
             <div class="row">
                 <div class="col-md-8 mx-auto">
@@ -151,9 +151,7 @@
                                 <div class="col">
                                 
                                     <div class="form-group">
-                                        <a href="usersignup.aspx">
-                                            <input class="btn btn-primary btn-block btn-lg" id="Button2" type="button" value="Sign Up" />                                
-                                        </a>
+                                        <asp:Button class="btn btn-primary btn-block btn-lg" Id="Button2" runat="server" Text="Sign Up" OnClick="Button2_Click" />                                                                        
                                     </div>
 
                                 </div>  

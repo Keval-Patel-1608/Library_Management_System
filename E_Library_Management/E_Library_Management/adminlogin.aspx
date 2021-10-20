@@ -2,12 +2,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<section style="background-color: #D6E4ED">
+    <%--<section style="background-color: #D6E4ED">--%>
+    <section style="background-color: #D6E4ED ; background-image: url('imgs/admin_login.jpg'); background-repeat: no-repeat; background-attachment: fixed ; background-size: 100% 100%;">
+
     <br /><br /><br /><br /><br />
     <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto">
-                <div class="card">
+                <%--<div class="card">--%>
+                <div class="card" style="opacity:0.95 ;">
+
                     <div class="card-body">
                         
                         <div class="row">
@@ -47,7 +51,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <asp:Button class="btn btn-success btn-block btn-lg" ID="Button1" runat="server" Text="Login" />
+                                    <asp:Button class="btn btn-success btn-block btn-lg" ID="Button1" runat="server" Text="Login" OnClick="Button1_Click" />
                                 </div>
 
                             </div>  

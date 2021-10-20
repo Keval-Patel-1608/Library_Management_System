@@ -74,6 +74,7 @@
     <Content Include="adminlogin.aspx" />
     <Content Include="adminpublishermanagement.aspx" />
     <Content Include="adminmembermanagement.aspx" />
+    <Content Include="book_inventory\book_icon.png" />
     <Content Include="bootstrap\css\bootstrap.css" />
     <Content Include="bootstrap\css\bootstrap.min.css" />
     <Content Include="bootstrap\css\bootstrap1.min.css" />
@@ -1731,7 +1732,9 @@
     <Content Include="fontawesome\webfonts\fa-regular-400.svg" />
     <Content Include="fontawesome\webfonts\fa-solid-900.svg" />
     <Content Include="homepage.aspx" />
+    <Content Include="imgs\about.png" />
     <Content Include="imgs\adminuser.png" />
+    <Content Include="imgs\admin_login.jpg" />
     <Content Include="imgs\bg_lib.jpg" />
     <Content Include="imgs\bg_lib_1.jpg" />
     <Content Include="imgs\bg_lib_2.jpg" />
@@ -1758,6 +1761,7 @@
     <Content Include="imgs\publisher.png" />
     <Content Include="imgs\search-online.png" />
     <Content Include="imgs\sign-up.png" />
+    <Content Include="imgs\terms.png" />
     <Content Include="imgs\writer.png" />
     <Content Include="userlogin.aspx" />
     <Content Include="userprofile.aspx" />
@@ -1765,6 +1769,7 @@
     <Content Include="viewbooks.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
+    <Content Include="terms.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="aboutus.aspx.cs">
@@ -1865,6 +1870,13 @@
     </Compile>
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="terms.aspx.cs">
+      <DependentUpon>terms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="terms.aspx.designer.cs">
+      <DependentUpon>terms.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

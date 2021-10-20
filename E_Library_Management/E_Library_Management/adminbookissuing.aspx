@@ -1,5 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="adminbookissuing.aspx.cs" Inherits="E_Library_Management.adminbookissuing" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
+        });
+    </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -37,15 +44,15 @@
                             <div class="col-md-6">
                                 <label>Member ID :</label>
                                 <div class="form-group">
-                                    <asp:TextBox class="form-control" ID="TextBox1" runat="server" placeholder="Member ID"></asp:TextBox>                                 
+                                    <asp:TextBox class="form-control" ID="TextBox2" runat="server" placeholder="Member ID"></asp:TextBox>                                 
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <label>Book ID :</label>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <asp:TextBox class="form-control" ID="TextBox3" runat="server" placeholder="Book ID"></asp:TextBox> 
-                                        <input class="btn btn-secondary" id="Button1" type="button" value="GO" />                                                                                                             
+                                        <asp:TextBox class="form-control" ID="TextBox1" runat="server" placeholder="Book ID"></asp:TextBox> 
+                                        <asp:LinkButton class="btn btn-secondary ml-1" ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" >GO</asp:LinkButton>                                                                                        
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +62,7 @@
                             <div class="col-md-6">
                                 <label>Member Name :</label>
                                 <div class="form-group">
-                                    <asp:TextBox class="form-control" ID="TextBox2" runat="server" placeholder="Member Name" ReadOnly="True"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="TextBox3" runat="server" placeholder="Member Name" ReadOnly="True"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -87,13 +94,13 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input class="btn btn-primary btn-block btn-lg" id="Button2" type="button" value="Issue" />
+                                    <asp:LinkButton class="btn btn-primary btn-block btn-lg" ID="LinkButton2" runat="server" OnClick="LinkButton2_Click" >Issue</asp:LinkButton>
                                 </div>
                             </div>  
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input class="btn btn-success btn-block btn-lg" id="Button3" type="button" value="Return" />
+                                    <asp:LinkButton class="btn btn-success btn-block btn-lg" ID="LinkButton3" runat="server" OnClick="LinkButton3_Click" >Return</asp:LinkButton>
                                 </div>
                             </div> 
 
@@ -134,8 +141,27 @@
                         </div>
 
                        <div class="row">
+                           <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:elibraryDBConnectionString2 %>" SelectCommand="SELECT * FROM [book_issue_table]"></asp:SqlDataSource>
                            <div class="col">
-                               <asp:GridView class="table table-dark table-hover" ID="GridView1" runat="server"></asp:GridView>
+                               <asp:GridView class="table table-hover" ID="GridView1" runat="server" OnRowDataBound="GridView1_RowDataBound" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="Vertical">
+                                   <AlternatingRowStyle BackColor="#CCCCCC" />
+                                   <Columns>
+                                       <asp:BoundField DataField="member_id" HeaderText="Member ID" SortExpression="member_id" />
+                                       <asp:BoundField DataField="member_name" HeaderText="Member Name" SortExpression="member_name" />
+                                       <asp:BoundField DataField="book_id" HeaderText="Book ID" SortExpression="book_id" />
+                                       <asp:BoundField DataField="book_name" HeaderText="Book Name" SortExpression="book_name" />
+                                       <asp:BoundField DataField="issue_date" HeaderText="Issue Date" SortExpression="issue_date" />
+                                       <asp:BoundField DataField="due_date" HeaderText="Due Date" SortExpression="due_date" />
+                                   </Columns>
+                                   <FooterStyle BackColor="#CCCCCC" />
+                                   <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                                   <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                                   <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                   <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                   <SortedAscendingHeaderStyle BackColor="#808080" />
+                                   <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                   <SortedDescendingHeaderStyle BackColor="#383838" />
+                               </asp:GridView>
                                <%--<asp:GridView class="table table-striped table-bordered" ID="GridView2" runat="server"></asp:GridView>--%>
                            </div>
                        </div>
@@ -146,7 +172,7 @@
         </div>
     </div>
          
-    <br /><br /><br /><br /><br />
+    
     </section>
 
 </asp:Content>

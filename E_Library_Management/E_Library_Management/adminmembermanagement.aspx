@@ -1,5 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="adminmembermanagement.aspx.cs" Inherits="E_Library_Management.adminusermanagement" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
+
+        });
+    </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -39,7 +48,7 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="ID"></asp:TextBox>
-                                        <asp:LinkButton ID="LinkButton4" class="btn btn-primary ml-1" runat="server"><i class="fas fa-search "></i></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton4" class="btn btn-primary ml-1" runat="server" OnClick="LinkButton4_Click"><i class="fas fa-search "></i></asp:LinkButton>
                                     </div>
                                 </div>
                             </div>
@@ -56,9 +65,9 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <asp:TextBox CssClass="form-control" ID="TextBox12" runat="server" placeholder="Status" ReadOnly="True"></asp:TextBox>
-                                        <asp:LinkButton ID="LinkButton1" class="btn btn-success ml-1" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
-                                        <asp:LinkButton ID="LinkButton2" class="btn btn-warning ml-1" runat="server"><i class="fas fa-pause-circle"></i></asp:LinkButton>
-                                        <asp:LinkButton ID="LinkButton3" class="btn btn-danger ml-1" runat="server"><i class="fas fa-times-circle"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton1" class="btn btn-success ml-1" runat="server" OnClick="LinkButton1_Click"><i class="fas fa-check-circle"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton2" class="btn btn-warning ml-1" runat="server" OnClick="LinkButton2_Click"><i class="fas fa-pause-circle"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton3" class="btn btn-danger ml-1" runat="server" OnClick="LinkButton3_Click"><i class="fas fa-times-circle"></i></asp:LinkButton>
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +136,7 @@
                             <div class="col">
                                 
                                 <div class="form-group">
-                                        <asp:Button class="btn btn-danger btn-block btn-lg" id="Button2" runat="server" Text="Delete User Permantly" />
+                                        <asp:Button class="btn btn-danger btn-block btn-lg" id="Button2" runat="server" Text="Delete User Permantly" OnClick="Button2_Click" />
                                 </div>
 
                             </div>  
@@ -167,8 +176,30 @@
                         </div>
 
                        <div class="row">
+
+                           <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:elibraryDBConnectionString2 %>" SelectCommand="SELECT * FROM [member_master_table]"></asp:SqlDataSource>
+
                            <div class="col">
-                               <asp:GridView class="table table-dark table-hover" ID="GridView1" runat="server"></asp:GridView>
+                               <asp:GridView class="table table-hover" ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" DataKeyNames="member_id" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="Vertical" >
+                                   <AlternatingRowStyle BackColor="#CCCCCC" />
+                                   <Columns>
+                                       <asp:BoundField DataField="member_id" HeaderText="Member ID" ReadOnly="True" SortExpression="member_id" />
+                                       <asp:BoundField DataField="full_name" HeaderText="Name" SortExpression="full_name" />
+                                       <asp:BoundField DataField="account_status" HeaderText="Account Status" SortExpression="account_status" />
+                                       <asp:BoundField DataField="contact_no" HeaderText="Contact" SortExpression="contact_no" />
+                                       <asp:BoundField DataField="email" HeaderText="E-mail" SortExpression="email" />
+                                       <asp:BoundField DataField="state" HeaderText="State" SortExpression="state" />
+                                       <asp:BoundField DataField="city" HeaderText="City" SortExpression="city" />
+                                   </Columns>
+                                   <FooterStyle BackColor="#CCCCCC" />
+                                   <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                                   <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                                   <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                   <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                   <SortedAscendingHeaderStyle BackColor="#808080" />
+                                   <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                   <SortedDescendingHeaderStyle BackColor="#383838" />
+                               </asp:GridView>
                                <%--<asp:GridView class="table table-striped table-bordered" ID="GridView2" runat="server"></asp:GridView>--%>
                            </div>
                        </div>
